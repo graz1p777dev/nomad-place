@@ -588,7 +588,7 @@ export default function NomadPlace() {
           <div className="reveal" style={{
             borderRadius: 20, overflow: "hidden", display: "grid", gridTemplateColumns: "1fr 2fr",
             boxShadow: "0 4px 24px rgba(92,61,30,0.1)", background: "white",
-          }} className="reveal grid grid-cols-1 md:grid-cols-3">
+          }}>
             <div style={{ position: "relative", minHeight: 240, overflow: "hidden" }} className="md:col-span-1">
               <img src={IMGS.tour3} alt="Individual horse tour Kyrgyzstan" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} loading="lazy" />
               <div style={{ position: "absolute", inset: 0, background: "rgba(44,24,16,0.5)" }} />
