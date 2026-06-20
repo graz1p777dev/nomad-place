@@ -149,26 +149,29 @@ const t = {
 };
 
 // ─── Unsplash images ──────────────────────────────────────────────────────────
+const ph = (w: number, h: number, text: string, bg = "7C5230", fg = "F5EED7") =>
+  `https://placehold.co/${w}x${h}/${bg}/${fg}?text=${encodeURIComponent(text)}&font=playfair-display`;
+
 const IMGS = {
-  hero: "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=1600&q=80",
-  about: "https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=900&q=80",
-  room1: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
-  room2: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
-  yurt: "https://images.unsplash.com/photo-1535530706009-72dca7ab6c18?w=600&q=80",
-  tour1: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  tour2: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80",
-  tour3: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80",
+  hero:  ph(1600, 900, "Горы Кыргызстана\nСон-Куль · 1600×900"),
+  about: ph(900, 1125, "Семья Nomad Place\nу юрты · 900×1125"),
+  room1: ph(600, 400, "Стандартный номер\nс горным видом · 600×400"),
+  room2: ph(600, 400, "Семейный номер\nNomad Place · 600×400"),
+  yurt:  ph(600, 400, "Традиционная\nкыргызская юрта · 600×400"),
+  tour1: ph(800, 450, "Конный тур\nк озеру Сон-Куль · 800×450"),
+  tour2: ph(800, 450, "3-дневный тур\nгоры и озеро · 800×450"),
+  tour3: ph(800, 450, "Индивидуальный тур\nпо горам · 800×450"),
   gallery: [
-    "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=600&q=80",
-    "https://images.unsplash.com/photo-1535530706009-72dca7ab6c18?w=600&q=80",
-    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80",
-    "https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=600&q=80",
-    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80",
-    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
-    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
+    ph(600, 780, "Панорама гор\nСон-Куль · 600×780"),
+    ph(600, 600, "Юрта на закате\n600×600"),
+    ph(600, 600, "Всадники\nна маршруте · 600×600"),
+    ph(600, 600, "Озеро Сон-Куль\nрассвет · 600×600"),
+    ph(600, 780, "Хозяева гестхауса\nKyzart · 600×780"),
+    ph(600, 600, "Традиционная\nкухня · 600×600"),
+    ph(600, 600, "Уютный номер\nNomad Place · 600×600"),
+    ph(600, 600, "Лошади\nв горах · 600×600"),
   ],
-  cta_bg: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80",
+  cta_bg: ph(1600, 900, "Горные пастбища\nКыргызстан · 1600×900", "3D2010", "F5EED7"),
 };
 
 const WA_LINK = "https://wa.me/996704100104";
