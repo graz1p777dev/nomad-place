@@ -57,6 +57,7 @@ const t = {
     contacts_title: "Контакты",
     contacts_sub: "Мы всегда рады помочь",
     wa_btn: "Написать в WhatsApp",
+    booking_btn: "Забронировать на Booking",
     location: "Деревня Кызарт, Нарынская область, Кыргызстан",
     footer: "© 2024 Nomad Place Guest House. Все права защищены.",
     faq_items: [
@@ -127,6 +128,7 @@ const t = {
     contacts_title: "Contacts",
     contacts_sub: "We're always happy to help",
     wa_btn: "Message on WhatsApp",
+    booking_btn: "Book on Booking.com",
     location: "Kyzart Village, Naryn Region, Kyrgyzstan",
     footer: "© 2024 Nomad Place Guest House. All rights reserved.",
     faq_items: [
@@ -175,6 +177,7 @@ const IMGS = {
 };
 
 const WA_LINK = "https://wa.me/996704100104";
+const BOOKING_LINK = "https://www.booking.com/hotel/kg/nomad-place.html?aid=1263239;label=PShare-Pulse-lppZro@1753958944";
 const SECTIONS = ["home", "about", "guesthouse", "tours", "prices", "gallery", "reviews", "faq", "contacts"];
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -223,6 +226,11 @@ const IconPin = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5">
     <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+  </svg>
+);
+const IconBooking = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+    <path d="M19.23 5.82h-1.6V4.19c0-.94-.76-1.7-1.7-1.7H4.07c-.94 0-1.7.76-1.7 1.7v14.38c0 .26.22.47.48.47h2.56v1.27c0 .94.76 1.7 1.7 1.7H19.23c.94 0 1.7-.76 1.7-1.7V7.52c0-.94-.76-1.7-1.7-1.7zM5.41 17.1H3.8V4.19c0-.15.12-.27.27-.27h11.86c.15 0 .27.12.27.27V5.82H7.11c-.94 0-1.7.76-1.7 1.7V17.1zm14.8 3c0 .15-.12.27-.27.27H7.08c-.15 0-.27-.12-.27-.27V7.52c0-.15.12-.27.27-.27H19.9c.15 0 .27.12.27.27V20.1zm-3.57-8.94h-2.02v-1c0-.28-.23-.51-.51-.51s-.51.23-.51.51v1H11.5c-.28 0-.51.23-.51.51v4.63c0 .28.23.51.51.51h4.12c.28 0 .51-.23.51-.51v-4.63c-.02-.28-.24-.51-.52-.51zm-.51 4.63h-3.1v-3.61h3.1v3.61z"/>
   </svg>
 );
 const IconStar = ({ filled = true }: { filled?: boolean }) => (
@@ -398,6 +406,17 @@ export default function NomadPlace() {
                 onMouseLeave={e => (e.currentTarget.style.background = "#25D366")}
               >
                 <IconWA />{text.hero_wa}
+              </a>
+              <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer" style={{
+                display: "flex", alignItems: "center", gap: 8,
+                background: "#003580", color: "white", borderRadius: 8,
+                padding: "14px 28px", fontSize: 16, fontWeight: 600, textDecoration: "none",
+                transition: "all 0.25s",
+              }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#00275e")}
+                onMouseLeave={e => (e.currentTarget.style.background = "#003580")}
+              >
+                <IconBooking />{text.booking_btn}
               </a>
             </div>
           </div>
@@ -821,6 +840,9 @@ export default function NomadPlace() {
 
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, background: "#25D366", color: "white", borderRadius: 12, padding: "16px", fontSize: 16, fontWeight: 700, textDecoration: "none", marginTop: 8 }}>
                 <IconWA />{text.wa_btn}
+              </a>
+              <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, background: "#003580", color: "white", borderRadius: 12, padding: "16px", fontSize: 16, fontWeight: 700, textDecoration: "none", marginTop: 8 }}>
+                <IconBooking />{text.booking_btn}
               </a>
             </div>
 
