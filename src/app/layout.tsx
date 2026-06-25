@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     description: "Authentic horse tours and guesthouse in Kyrgyzstan. Discover Son-Kul lake.",
     type: "website",
     locale: "ru_RU",
+    images: [{ url: "/nomad-place-logo.jpg" }],
   },
 };
 

@@ -19,7 +19,7 @@ const t = {
     about_title: "О нас",
     about_p1: "Nomad Place — это не просто гестхаус. Это место, где горы встречаются с гостеприимством, а каждый гость становится частью нашей истории.",
     about_p2: "Мы живём в деревне Кызарт, у подножия Тянь-Шаня, и каждый день просыпаемся с видом на бесконечные пастбища. Наша семья принимает путешественников уже много лет, делясь настоящей кыргызской культурой, традиционной кухней и любовью к природе.",
-    about_p3: "Мы верим, что лучший способ познать Кыргызстан — это седло лошади, запах горного воздуха и чашка кумыса у юрты.",
+    about_p3: "Мы верим, что лучший способ познать Кыргызстан — это седло лошади, запах горного воздуха и чашка кымыза у юрты.",
     gh_title: "Гестхаус",
     gh_sub: "Комфорт в объятиях природы",
     gh_room1: "Стандартный номер",
@@ -93,7 +93,7 @@ const t = {
     about_title: "About Us",
     about_p1: "Nomad Place is more than a guesthouse. It's a place where mountains meet hospitality and every guest becomes part of our story.",
     about_p2: "We live in Kyzart village, at the foothills of the Tian Shan mountains, waking up every day to endless alpine pastures. Our family has been welcoming travellers for many years, sharing authentic Kyrgyz culture, traditional cuisine and a deep love of nature.",
-    about_p3: "We believe the best way to experience Kyrgyzstan is from a horse's saddle, breathing mountain air with a cup of kumiss beside a yurt.",
+    about_p3: "We believe the best way to experience Kyrgyzstan is from a horse's saddle, breathing mountain air with a cup of kymyz beside a yurt.",
     gh_title: "Guest House",
     gh_sub: "Comfort in the embrace of nature",
     gh_room1: "Standard Room",
@@ -162,7 +162,7 @@ const ph = (w: number, h: number, text: string, bg = "7C5230", fg = "F5EED7") =>
 
 const IMGS = {
   hero:  "/hero.webp",
-  about: "/about.jpg",
+  about: ph(900, 1125, "Семья Nomad Place\nу юрты · 900×1125"),
   room1: "/room1.webp",
   room2: ph(600, 400, "Семейный номер\nNomad Place · 600×400"),
   yurt:  ph(600, 400, "Традиционная\nкыргызская юрта · 600×400"),
@@ -229,10 +229,7 @@ const IconHeart = () => (
   </svg>
 );
 const IconHorse = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-8 h-8">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c1.5 0 3 .5 4 1.5L18 6l2 1-1 3-2-1-1 2v3l-1 1H9l-1-1V11L7 9 5 10 4 7l2-1 2-1.5C9.5 3.5 10.5 3 12 3z" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 15v3l-1 3h2l1-2 1 2h2l-1-3v-3" />
-  </svg>
+  <span style={{ fontSize: 28, lineHeight: 1 }}>🐎</span>
 );
 const IconCheck = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5 flex-shrink-0">
@@ -343,11 +340,7 @@ export default function NomadPlace() {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           {/* Logo */}
           <button onClick={() => scrollTo("home")} style={{ display: "flex", alignItems: "center", gap: 10, background: "none", border: "none", cursor: "pointer" }}>
-            <div style={{ width: 36, height: 36, borderRadius: "50%", background: gold, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg viewBox="0 0 24 24" fill="white" width={20} height={20}>
-                <path d="M3 20l5-8 4 5 3-4 6 7H3z" />
-              </svg>
-            </div>
+            <img src="/nomad-place-logo.jpg" alt="Nomad Place" style={{ height: 44, width: 44, borderRadius: 8, objectFit: "cover" }} />
             <div style={{ lineHeight: 1.1 }}>
               <div style={{ fontFamily: "var(--font-playfair)", fontSize: 15, fontWeight: 700, color: brown }}>NOMAD PLACE</div>
               <div style={{ fontSize: 9, letterSpacing: 3, color: textMuted, textTransform: "uppercase" }}>GUEST HOUSE</div>
@@ -369,10 +362,16 @@ export default function NomadPlace() {
               marginLeft: 8, background: gold, color: "white", border: "none",
               borderRadius: 6, padding: "6px 14px", fontSize: 12, fontWeight: 600, cursor: "pointer", letterSpacing: 1,
             }}>{lang === "ru" ? "EN" : "RU"}</button>
+            <button onClick={() => scrollTo("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, marginLeft: 8, display: "flex", alignItems: "center" }}>
+              <img src="/nomad-place-logo.jpg" alt="Nomad Place" style={{ height: 44, width: 44, borderRadius: 10, objectFit: "cover", border: `2px solid ${gold}` }} />
+            </button>
           </div>
 
           {/* Mobile controls */}
           <div style={{ display: "flex", gap: 8, alignItems: "center" }} className="flex lg:hidden">
+            <button onClick={() => scrollTo("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}>
+              <img src="/nomad-place-logo.jpg" alt="Nomad Place" style={{ height: 36, width: 36, borderRadius: 8, objectFit: "cover", border: `1px solid ${gold}` }} />
+            </button>
             <button onClick={() => setLang(lang === "ru" ? "en" : "ru")} style={{
               background: gold, color: "white", border: "none",
               borderRadius: 6, padding: "5px 10px", fontSize: 11, fontWeight: 700, cursor: "pointer",
