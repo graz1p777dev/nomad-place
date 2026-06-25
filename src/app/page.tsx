@@ -161,13 +161,13 @@ const ph = (w: number, h: number, text: string, bg = "7C5230", fg = "F5EED7") =>
   `https://placehold.co/${w}x${h}/${bg}/${fg}?text=${encodeURIComponent(text)}&font=playfair-display`;
 
 const IMGS = {
-  hero:  "/hero.png",
+  hero:  "/hero.webp",
   about: "/about.jpg",
-  room1: "/room1.png",
+  room1: "/room1.webp",
   room2: ph(600, 400, "Семейный номер\nNomad Place · 600×400"),
   yurt:  ph(600, 400, "Традиционная\nкыргызская юрта · 600×400"),
-  tour1: "/tour2.png",
-  tour2: "/tour3.png",
+  tour1: "/tour2.webp",
+  tour2: "/tour3.webp",
   tour3: ph(800, 450, "Индивидуальный тур\nпо горам · 800×450"),
   gallery: [
     ph(600, 780, "Панорама гор\nСон-Куль · 600×780"),
@@ -179,7 +179,7 @@ const IMGS = {
     ph(600, 600, "Уютный номер\nNomad Place · 600×600"),
     ph(600, 600, "Лошади\nв горах · 600×600"),
   ],
-  cta_bg: "/cta-bg.png",
+  cta_bg: "/cta-bg.webp",
 };
 
 const ORIGINAL_REVIEWS = [
