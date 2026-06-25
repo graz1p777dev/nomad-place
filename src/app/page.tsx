@@ -69,12 +69,16 @@ const t = {
       { q: "Что входит в стоимость проживания в гестхаусе?", a: "Проживание включает завтрак, Wi-Fi, парковку. Ужин и обед заказываются дополнительно — готовим традиционные кыргызские блюда." },
     ],
     review_items: [
-      { name: "Анна М.", country: "Россия", text: "Невероятный опыт! Лошади добрые, гид профессиональный, еда вкусная. Сон-Куль — это что-то нереальное. Обязательно вернусь!", stars: 5 },
-      { name: "Thomas B.", country: "Germany", text: "Best experience in Kyrgyzstan! The family is so welcoming and warm. The 3-day horse tour to Son-Kul was life-changing. Highly recommend!", stars: 5 },
-      { name: "Юлия К.", country: "Казахстан", text: "Прекрасное место. Уютный гестхаус, вкусная домашняя еда, потрясающие виды. Спасибо семье за такое тёплое гостеприимство!", stars: 5 },
-      { name: "Maria S.", country: "Spain", text: "Absolutely magical. Woke up in a yurt with mountains all around. The horses were gentle and the guide very knowledgeable. 10/10!", stars: 5 },
-      { name: "Алексей Р.", country: "Украина", text: "Ехали 3 дня на конях к Сон-Кулю. Это незабываемо. Природа, юрты, звёздное небо — всё как в сказке. Отличный сервис!", stars: 5 },
-      { name: "Lucas F.", country: "France", text: "Nomad Place is a hidden gem. Simple, authentic, beautiful. The horseback ride to Son-Kul is worth every dollar.", stars: 5 },
+      { name: "Carlotta", country: "Германия", text: "У нас был такой приятный и комфортный отдых в гестхаусе! Хозяева очень милые, прекрасно говорят по-английски и даже дали рекомендации по интересным местам на нашем маршруте...", stars: 5 },
+      { name: "Marine", country: "Швейцария", text: "Жильё и семья были просто идеальными! Нам очень понравилось там останавливаться и мы настоятельно рекомендуем!", stars: 5 },
+      { name: "Ansell", country: "Великобритания", text: "Отличное гостеприимство. Всё организовали, включая 3-дневный конный поход и такси из Кызарта. Очень дружелюбные и вкусная еда.", stars: 5 },
+      { name: "Kennedy", country: "Австралия", text: "Хозяин и семья были невероятно гостеприимны. Еда была потрясающей, кровати удобными, а ванная и душ — 10/10. Не могу рекомендовать их достаточно высоко!", stars: 5 },
+      { name: "Mikołaj", country: "Польша", text: "Отличное гостеприимство в доме замечательной семьи. Еда была очень вкусной. Они также организуют конные прогулки. Такие места должны процветать. Желаю вам всего наилучшего, Nomad Place!", stars: 5 },
+      { name: "Élodie", country: "Франция", text: "У меня был замечательный отдых в Nomad Hostel. Хозяева просто adorable. Думаю, я съела лучший домашний хлеб во всём Кыргызстане. Мне очень понравилась еда, всё было прекрасно приготовлено...", stars: 5 },
+      { name: "Leon", country: "Кыргызстан", text: "Очень уютное местечко прямо у начала всех конных маршрутов! Я был приятно удивлён чистотой и новизной удобств, а также дружелюбием и отзывчивостью хозяев...", stars: 5 },
+      { name: "Lisa", country: "Австрия", text: "Такое уютное местечко у самого начала всех конных туров! Была приятно удивлена чистотой и новым состоянием удобств, а хозяева такие дружелюбные и отзывчивые...", stars: 5 },
+      { name: "Olivier", country: "Нидерланды", text: "Очень хорошее соотношение цены и качества. Ужин и завтрак включены и приготовлены дома — очень вкусно. Приятная социальная атмосфера.", stars: 5 },
+      { name: "Lisa", country: "Германия", text: "Нам очень понравился тёплый приём Аги и его семьи. Также было очень приятно, насколько быстро и легко организовали наш 2-дневный конный тур на Сон-Куль. Нам ни о чём не нужно было беспокоиться. Домашняя еда была отличной!", stars: 5 },
     ],
   },
   en: {
@@ -140,12 +144,16 @@ const t = {
       { q: "What's included in guesthouse accommodation?", a: "Accommodation includes breakfast, Wi-Fi and parking. Lunch and dinner can be ordered separately — we cook fresh traditional Kyrgyz food." },
     ],
     review_items: [
-      { name: "Анна М.", country: "Russia", text: "Невероятный опыт! Лошади добрые, гид профессиональный, еда вкусная. Сон-Куль — это что-то нереальное. Обязательно вернусь!", stars: 5 },
-      { name: "Thomas B.", country: "Germany", text: "Best experience in Kyrgyzstan! The family is so welcoming and warm. The 3-day horse tour to Son-Kul was life-changing. Highly recommend!", stars: 5 },
-      { name: "Юлия К.", country: "Kazakhstan", text: "Прекрасное место. Уютный гестхаус, вкусная домашняя еда, потрясающие виды. Спасибо семье за такое тёплое гостеприимство!", stars: 5 },
-      { name: "Maria S.", country: "Spain", text: "Absolutely magical. Woke up in a yurt with mountains all around. The horses were gentle and the guide very knowledgeable. 10/10!", stars: 5 },
-      { name: "Алексей Р.", country: "Ukraine", text: "Ехали 3 дня на конях к Сон-Кулю. Это незабываемо. Природа, юрты, звёздное небо — всё как в сказке. Отличный сервис!", stars: 5 },
-      { name: "Lucas F.", country: "France", text: "Nomad Place is a hidden gem. Simple, authentic, beautiful. The horseback ride to Son-Kul is worth every dollar.", stars: 5 },
+      { name: "Carlotta", country: "Germany", text: "We had such a lovely and comfortable stay at the guesthouse! The owners are super nice, speak very good English and even gave us some recommendations for cool spots on our travel route afterwards...", stars: 5 },
+      { name: "Marine", country: "Switzerland", text: "The accommodation and family was perfect! We really loved staying at their place! And would highly recommend!!", stars: 5 },
+      { name: "Ansell", country: "United Kingdom", text: "Great hospitality. Sorted everything out, including the 3 day horse trek and the taxi out of Kyzart. Super friendly and great food.", stars: 5 },
+      { name: "Kennedy", country: "Australia", text: "The owner and family were incredibly hospitable. The food was amazing, the beds were comfortable and the bathroom and shower were 10/10. I couldn't recommend these guys higher!", stars: 5 },
+      { name: "Mikołaj", country: "Poland", text: "Great hospitality in house of wonderful family. Food was really delicious. They organize horse riding tours as well. Places like this should be successful. I wish you all the best Nomad Place!", stars: 5 },
+      { name: "Élodie", country: "France", text: "I had a wonderful stay at Nomad Hostel. The owners are truly adorable. I think I ate the best homemade bread in all of Kyrgyzstan. I really enjoyed my meal, everything was well prepared.", stars: 5 },
+      { name: "Leon", country: "Kyrgyzstan", text: "It's really accommodating with a super clean property and washroom. The family is super friendly and the food is just amazing!! As I got sick, they took care of me and gave me medicine.", stars: 5 },
+      { name: "Lisa", country: "Austria", text: "Such a cozy little place right at the start of all horse trekking tours! I was super surprised about how clean and new the amenities are and how friendly and helpful the host is.", stars: 5 },
+      { name: "Olivier", country: "Netherlands", text: "Very good value for your money. Dinner and breakfast is included and homemade, which was also very tasty. Nice social vibe.", stars: 5 },
+      { name: "Lisa", country: "Germany", text: "We loved the friendly welcome of Aga and his family. It was also very comfortable how quickly and easily our 2-days ride tour to Sonkul was organized. We had nothing to worry about. The homemade food was great!", stars: 5 },
     ],
   },
 };
@@ -768,7 +776,23 @@ export default function NomadPlace() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ display: "inline-block", background: "white", borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.reviews_title}</div>
-            <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 12 }}>{text.reviews_sub}</h2>
+            <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 20 }}>{text.reviews_sub}</h2>
+            {/* Booking.com badge */}
+            <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 16, background: "white", borderRadius: 16, padding: "16px 28px", textDecoration: "none", boxShadow: "0 4px 20px rgba(92,61,30,0.1)", border: `1px solid ${beige}` }}>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: 11, color: textMuted, letterSpacing: 1, textTransform: "uppercase", fontWeight: 600 }}>Booking.com</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}>
+                  <div style={{ background: "#003580", color: "white", borderRadius: 8, padding: "4px 10px", fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700 }}>9.7</div>
+                  <div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: textDark }}>Exceptional</div>
+                    <div style={{ fontSize: 12, color: textMuted }}>35 {lang === "ru" ? "отзывов" : "reviews"}</div>
+                  </div>
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 2, color: "#003580" }}>
+                {Array.from({ length: 5 }).map((_, j) => <IconStar key={j} />)}
+              </div>
+            </a>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }} className="grid-cols-1 md:grid-cols-3">
             {text.review_items.map((r, i) => (
