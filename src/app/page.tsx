@@ -200,6 +200,19 @@ const ORIGINAL_REVIEWS = [
 const WA_LINK = "https://wa.me/996704100104";
 const BOOKING_LINK = "https://www.booking.com/hotel/kg/nomad-place.html?aid=1263239;label=PShare-Pulse-lppZro@1753958944";
 const AGODA_LINK = "https://www.agoda.com/en-ie/nomad-place/hotel/chaek-kg.html?cid=1965829&ds=mzkDMeqKrKl25Yex";
+
+const CURRENCIES = [
+  { code: "USD", symbol: "$",  rate: 1,    label: "USD" },
+  { code: "KGS", symbol: "с", rate: 87,   label: "Сом" },
+  { code: "EUR", symbol: "€",  rate: 0.92, label: "EUR" },
+  { code: "RUB", symbol: "₽",  rate: 90,   label: "RUB" },
+];
+const fmtPrice = (usd: number, rateIdx: number) => {
+  const { rate, symbol, code } = CURRENCIES[rateIdx];
+  const val = Math.round(usd * rate);
+  const formatted = val.toLocaleString("ru-RU");
+  return code === "USD" ? `$${formatted}` : code === "EUR" ? `€${formatted}` : `${formatted} ${symbol}`;
+};
 const SECTIONS = ["home", "about", "guesthouse", "tours", "prices", "gallery", "reviews", "faq", "contacts"];
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -281,6 +294,9 @@ export default function NomadPlace() {
   const [activeSection, setActiveSection] = useState("home");
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [reviewsOriginal, setReviewsOriginal] = useState(false);
+  const [currencyIdx, setCurrencyIdx] = useState(0);
+  const prevCurrency = () => setCurrencyIdx(i => (i - 1 + CURRENCIES.length) % CURRENCIES.length);
+  const nextCurrency = () => setCurrencyIdx(i => (i + 1) % CURRENCIES.length);
   const [scrolled, setScrolled] = useState(false);
   const text = t[lang];
   useReveal();
@@ -686,8 +702,30 @@ export default function NomadPlace() {
       <section id="prices" style={{ padding: "100px 24px", background: beige }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
-            <div style={{ display: "inline-block", background: "white", borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.prices_title}</div>
-            <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 12 }}>{text.prices_sub}</h2>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+              <div style={{ display: "inline-block", background: "white", borderRadius: 100, padding: "6px 18px", fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.prices_title}</div>
+              {/* Currency switcher */}
+              <div style={{ display: "flex", alignItems: "center", gap: 0, background: "white", borderRadius: 12, boxShadow: "0 2px 10px rgba(92,61,30,0.1)", overflow: "hidden", border: `1px solid ${beige}` }}>
+                <button onClick={prevCurrency} aria-label="previous currency" style={{ background: "none", border: "none", cursor: "pointer", padding: "8px 14px", color: textMuted, fontSize: 16, transition: "background 0.15s" }}
+                  onMouseEnter={e => (e.currentTarget.style.background = beige)}
+                  onMouseLeave={e => (e.currentTarget.style.background = "none")}
+                >‹</button>
+                {CURRENCIES.map((c, i) => (
+                  <button key={c.code} onClick={() => setCurrencyIdx(i)} style={{
+                    padding: "8px 14px", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 700,
+                    background: currencyIdx === i ? brown : "transparent",
+                    color: currencyIdx === i ? "white" : textMuted,
+                    transition: "all 0.2s",
+                    minWidth: 52,
+                  }}>{c.label}</button>
+                ))}
+                <button onClick={nextCurrency} aria-label="next currency" style={{ background: "none", border: "none", cursor: "pointer", padding: "8px 14px", color: textMuted, fontSize: 16, transition: "background 0.15s" }}
+                  onMouseEnter={e => (e.currentTarget.style.background = beige)}
+                  onMouseLeave={e => (e.currentTarget.style.background = "none")}
+                >›</button>
+              </div>
+            </div>
+            <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 12, marginTop: 16 }}>{text.prices_sub}</h2>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }} className="grid-cols-1 md:grid-cols-2">
@@ -697,17 +735,17 @@ export default function NomadPlace() {
               <p style={{ fontSize: 13, color: textMuted, marginBottom: 28 }}>{text.tour2_sub}</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                 {[
-                  [lang === "ru" ? "1 человек (приватный)" : "1 person (private)", "180 USD"],
-                  [lang === "ru" ? "Группа 2–3 человека" : "Group 2–3 people", "160 USD"],
-                  [lang === "ru" ? "Группа 4+ человек" : "Group 4+ people", "150 USD"],
-                ].map(([label, price], i) => (
+                  [lang === "ru" ? "1 человек (приватный)" : "1 person (private)", 180],
+                  [lang === "ru" ? "Группа 2–3 человека" : "Group 2–3 people", 160],
+                  [lang === "ru" ? "Группа 4+ человек" : "Group 4+ people", 150],
+                ].map(([label, usd], i) => (
                   <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: i < 2 ? `1px solid ${beige}` : "none" }}>
                     <span style={{ fontSize: 14, color: textMuted }}>{label}</span>
-                    <span style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: brown }}>{price}</span>
+                    <span style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: brown }}>{fmtPrice(usd as number, currencyIdx)}</span>
                   </div>
                 ))}
                 <div style={{ marginTop: 16, padding: "12px 16px", background: beige, borderRadius: 10, fontSize: 13, color: textMuted }}>
-                  <strong style={{ color: brown }}>{text.eng_guide}</strong> +25 USD {text.per_day}
+                  <strong style={{ color: brown }}>{text.eng_guide}</strong> +{fmtPrice(25, currencyIdx)} {text.per_day}
                 </div>
               </div>
             </div>
@@ -718,18 +756,18 @@ export default function NomadPlace() {
               <p style={{ fontSize: 13, color: textMuted, marginBottom: 28 }}>{text.tour3_sub}</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                 {[
-                  [lang === "ru" ? "Группа 4+ человека" : "Group 4+ people", "180 USD"],
-                  [lang === "ru" ? "Группа 3 человека" : "Group 3 people", "190 USD"],
-                  [lang === "ru" ? "Группа 2 человека" : "Group 2 people", "200 USD"],
-                  [lang === "ru" ? "1 человек (приватный)" : "1 person (private)", "250 USD"],
-                ].map(([label, price], i) => (
+                  [lang === "ru" ? "Группа 4+ человека" : "Group 4+ people", 180],
+                  [lang === "ru" ? "Группа 3 человека" : "Group 3 people", 190],
+                  [lang === "ru" ? "Группа 2 человека" : "Group 2 people", 200],
+                  [lang === "ru" ? "1 человек (приватный)" : "1 person (private)", 250],
+                ].map(([label, usd], i) => (
                   <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 0", borderBottom: i < 3 ? `1px solid ${beige}` : "none" }}>
                     <span style={{ fontSize: 14, color: textMuted }}>{label}</span>
-                    <span style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: brown }}>{price}</span>
+                    <span style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: brown }}>{fmtPrice(usd as number, currencyIdx)}</span>
                   </div>
                 ))}
                 <div style={{ marginTop: 16, padding: "12px 16px", background: beige, borderRadius: 10, fontSize: 13, color: textMuted }}>
-                  <strong style={{ color: brown }}>{text.eng_guide}</strong> +20 USD {text.per_day}
+                  <strong style={{ color: brown }}>{text.eng_guide}</strong> +{fmtPrice(20, currencyIdx)} {text.per_day}
                 </div>
               </div>
             </div>
