@@ -199,6 +199,7 @@ const ORIGINAL_REVIEWS = [
 
 const WA_LINK = "https://wa.me/996704100104";
 const BOOKING_LINK = "https://www.booking.com/hotel/kg/nomad-place.html?aid=1263239;label=PShare-Pulse-lppZro@1753958944";
+const AGODA_LINK = "https://www.agoda.com/en-ie/nomad-place/hotel/chaek-kg.html?cid=1965829&ds=mzkDMeqKrKl25Yex";
 const SECTIONS = ["home", "about", "guesthouse", "tours", "prices", "gallery", "reviews", "faq", "contacts"];
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -732,6 +733,24 @@ export default function NomadPlace() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Agoda banner */}
+          <div className="reveal" style={{ marginTop: 20, background: "white", borderRadius: 16, padding: "20px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap", boxShadow: "0 2px 12px rgba(92,61,30,0.07)", border: `1px solid ${beige}` }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ background: "#e8393a", borderRadius: 8, padding: "6px 12px", fontWeight: 800, fontSize: 14, color: "white", letterSpacing: 0.5 }}>agoda</div>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 600, color: textDark }}>{lang === "ru" ? "Также доступно на Agoda" : "Also available on Agoda"}</div>
+                <div style={{ fontSize: 12, color: textMuted, marginTop: 2 }}>{lang === "ru" ? "Сравните цены и забронируйте удобным способом" : "Compare prices and book the way you prefer"}</div>
+              </div>
+            </div>
+            <a href={AGODA_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#e8393a", color: "white", borderRadius: 8, padding: "10px 22px", fontSize: 14, fontWeight: 600, textDecoration: "none", flexShrink: 0, transition: "background 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "#c42d2e")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#e8393a")}
+            >
+              {lang === "ru" ? "Подробнее" : "View on Agoda"}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} width={14} height={14}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
           </div>
 
           {/* Individual CTA */}
