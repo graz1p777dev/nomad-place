@@ -995,6 +995,23 @@ export default function NomadPlace() {
                   </div>
                 </a>
               ))}
+              {/* Map links */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingLeft: 60 }}>
+                <a href="https://www.google.com/maps/place/Yurt+camp+Tuzashuu+Azamat/@41.9216895,75.1374284,17z" target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "rgba(201,168,76,0.8)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4, transition: "color 0.2s" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = gold)}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(201,168,76,0.8)")}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" width={12} height={12}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  {lang === "ru" ? "Юрт-лагерь Tuzashuu Azamat" : "Yurt camp Tuzashuu Azamat"}
+                </a>
+                <a href="https://www.google.com/maps?q=Nomad+guesthouse+-+Son+Kul,+Kyzart&ftid=0x389989007149a1bb:0xbb51a26d2427af36" target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "rgba(201,168,76,0.8)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4, transition: "color 0.2s" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = gold)}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(201,168,76,0.8)")}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" width={12} height={12}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  {lang === "ru" ? "Гестхаус Nomad Place, Кызарт" : "Nomad Place guesthouse, Kyzart"}
+                </a>
+              </div>
 
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, background: "#25D366", color: "white", borderRadius: 12, padding: "16px", fontSize: 16, fontWeight: 700, textDecoration: "none", marginTop: 8 }}>
                 <IconWA />{text.wa_btn}
