@@ -608,31 +608,52 @@ export default function NomadPlace() {
 
           {/* Individual */}
           <div className="reveal" style={{
-            borderRadius: 20, overflow: "hidden", display: "grid", gridTemplateColumns: "1fr 2fr",
+            borderRadius: 20, overflow: "hidden", display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
             boxShadow: "0 4px 24px rgba(92,61,30,0.1)", background: "white",
           }}>
-            <div style={{ position: "relative", minHeight: 240, overflow: "hidden" }} className="md:col-span-1">
+            {/* Left — фото */}
+            <div style={{ position: "relative", minHeight: 260, overflow: "hidden" }}>
               <img src={IMGS.tour3} alt="Individual horse tour Kyrgyzstan" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} loading="lazy" />
-              <div style={{ position: "absolute", inset: 0, background: "rgba(44,24,16,0.5)" }} />
+              <div style={{ position: "absolute", inset: 0, background: "rgba(44,24,16,0.55)" }} />
               <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "white", textAlign: "center", padding: 24 }}>
-                <div style={{ fontFamily: "var(--font-playfair)", fontSize: 30, fontWeight: 700 }}>{text.tour_ind_title}</div>
-                <div style={{ fontSize: 14, opacity: 0.85, marginTop: 6 }}>{text.tour_ind_sub}</div>
+                <div style={{ fontFamily: "var(--font-playfair)", fontSize: 26, fontWeight: 700, lineHeight: 1.2 }}>{text.tour_ind_title}</div>
+                <div style={{ fontSize: 13, opacity: 0.85, marginTop: 8, fontStyle: "italic" }}>{text.tour_ind_sub}</div>
               </div>
             </div>
-            <div style={{ padding: "36px 40px", display: "flex", gap: 40, flexWrap: "wrap", alignItems: "center" }} className="md:col-span-2">
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12, flex: 1, minWidth: 200 }}>
+
+            {/* Middle — что включено */}
+            <div style={{ padding: "32px 28px", borderRight: `1px solid ${beige}` }}>
+              <p style={{ fontSize: 11, fontWeight: 700, color: gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 18 }}>{text.included}</p>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
                 {text.t_ind_inc.map((item, i) => (
-                  <li key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: textMuted }}>
-                    <span style={{ color: green }}><IconCheck /></span>{item}
+                  <li key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: textMuted }}>
+                    <span style={{ color: green, flexShrink: 0 }}><IconCheck /></span>{item}
                   </li>
                 ))}
               </ul>
-              <div style={{ textAlign: "center", minWidth: 180 }}>
-                <div style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: brown, marginBottom: 6 }}>{text.price_discuss}</div>
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 12, background: "#25D366", color: "white", borderRadius: 10, padding: "12px 24px", fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
-                  <IconWA />{text.contact_us}
-                </a>
+            </div>
+
+            {/* Right — цена + кнопки */}
+            <div style={{ padding: "32px 28px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 16, textAlign: "center", background: beige }}>
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: textMuted, letterSpacing: 2, textTransform: "uppercase", marginBottom: 10 }}>
+                  {lang === "ru" ? "Стоимость" : "Price"}
+                </div>
+                <div style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: brown, lineHeight: 1.3 }}>{text.price_discuss}</div>
               </div>
+              <div style={{ width: "100%", height: 1, background: "#ddd" }} />
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", background: "#25D366", color: "white", borderRadius: 10, padding: "12px 16px", fontSize: 14, fontWeight: 600, textDecoration: "none", transition: "background 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#1ea855")}
+                onMouseLeave={e => (e.currentTarget.style.background = "#25D366")}
+              >
+                <IconWA />{text.contact_us}
+              </a>
+              <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", background: "#003580", color: "white", borderRadius: 10, padding: "12px 16px", fontSize: 14, fontWeight: 600, textDecoration: "none", transition: "background 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#00275e")}
+                onMouseLeave={e => (e.currentTarget.style.background = "#003580")}
+              >
+                <IconBooking />{lang === "ru" ? "Booking.com" : "Book on Booking"}
+              </a>
             </div>
           </div>
         </div>
