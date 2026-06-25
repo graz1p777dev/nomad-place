@@ -932,9 +932,20 @@ export default function NomadPlace() {
       </section>
 
       {/* ── FOOTER ────────────────────────────────────────────────────── */}
-      <footer style={{ background: "#1A0E08", padding: "28px 24px", textAlign: "center", color: "rgba(255,255,255,0.5)", fontSize: 13 }}>
-        <div style={{ marginBottom: 8, fontFamily: "var(--font-playfair)", color: gold, fontSize: 16, letterSpacing: 2 }}>NOMAD PLACE</div>
-        {text.footer}
+      <footer style={{ background: "#1A0E08", padding: "28px 24px", color: "rgba(255,255,255,0.5)", fontSize: 13 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+          <a href="https://github.com/graz1p777dev" target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", textDecoration: "none", transition: "color 0.2s" }}
+            onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
+          >
+            {lang === "ru" ? "Создано" : "Made by"} graz1p777
+          </a>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ marginBottom: 4, fontFamily: "var(--font-playfair)", color: gold, fontSize: 16, letterSpacing: 2 }}>NOMAD PLACE</div>
+            <div>{text.footer}</div>
+          </div>
+          <div style={{ width: 100 }} />
+        </div>
       </footer>
 
       {/* ── WHATSAPP FLOATING BUTTON ───────────────────────────────────── */}
