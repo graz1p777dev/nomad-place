@@ -184,6 +184,19 @@ const IMGS = {
   cta_bg: ph(1600, 900, "Горные пастбища\nКыргызстан · 1600×900", "3D2010", "F5EED7"),
 };
 
+const ORIGINAL_REVIEWS = [
+  { name: "Carlotta", country: "Germany", text: "We had such a lovely and comfortable stay at the guesthouse! The owners are super nice, speak very good English and even gave us some recommendations for cool spots on our travel route afterwards..." },
+  { name: "Marine", country: "Switzerland", text: "The accommodation and family was perfect! We really loved staying at their place! And would highly recommend!!" },
+  { name: "Ansell", country: "United Kingdom", text: "Great hospitality. Sorted everything out, including the 3 day horse trek and the taxi out of Kyzart. Super friendly and great food." },
+  { name: "Kennedy", country: "Australia", text: "The owner and family were incredibly hospitable. The food was amazing, the beds were comfortable and the bathroom and shower were 10/10. I couldn't recommend these guys higher!" },
+  { name: "Mikołaj", country: "Poland", text: "Great hospitality in house of wonderful family. Food was really delicious. They organize horse riding tours as well. Places like this should be successful. I wish you all the best Nomad Place!" },
+  { name: "Élodie", country: "France", text: "I had a wonderful stay at Nomad Hostel. The owners are truly adorable. I think I ate the best homemade bread in all of Kyrgyzstan. I really enjoyed my meal, everything was well prepared." },
+  { name: "Leon", country: "Kyrgyzstan", text: "It's really accommodating with a super clean property and washroom. The family is super friendly and the food is just amazing!! As I got sick, they took care of me and gave me medicine." },
+  { name: "Lisa", country: "Austria", text: "Such a cozy little place right at the start of all horse trekking tours! I was super surprised about how clean and new the amenities are and how friendly and helpful the host is." },
+  { name: "Olivier", country: "Netherlands", text: "Very good value for your money. Dinner and breakfast is included and homemade, which was also very tasty. Nice social vibe." },
+  { name: "Lisa", country: "Germany", text: "We loved the friendly welcome of Aga and his family. It was also very comfortable how quickly and easily our 2-days ride tour to Sonkul was organized. We had nothing to worry about. The homemade food was great!" },
+];
+
 const WA_LINK = "https://wa.me/996704100104";
 const BOOKING_LINK = "https://www.booking.com/hotel/kg/nomad-place.html?aid=1263239;label=PShare-Pulse-lppZro@1753958944";
 const SECTIONS = ["home", "about", "guesthouse", "tours", "prices", "gallery", "reviews", "faq", "contacts"];
@@ -266,6 +279,7 @@ export default function NomadPlace() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
+  const [reviewsOriginal, setReviewsOriginal] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const text = t[lang];
   useReveal();
@@ -797,9 +811,26 @@ export default function NomadPlace() {
       {/* ── REVIEWS ───────────────────────────────────────────────────── */}
       <section id="reviews" style={{ padding: "100px 24px", background: beige }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
-            <div style={{ display: "inline-block", background: "white", borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.reviews_title}</div>
-            <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 20 }}>{text.reviews_sub}</h2>
+          <div className="reveal" style={{ marginBottom: 60, position: "relative" }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ display: "inline-block", background: "white", borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.reviews_title}</div>
+              <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 20 }}>{text.reviews_sub}</h2>
+            </div>
+            {/* Toggle original/translation */}
+            <div style={{ position: "absolute", top: 0, right: 0, display: "flex", background: "white", borderRadius: 10, overflow: "hidden", boxShadow: "0 2px 8px rgba(92,61,30,0.1)", border: `1px solid ${beige}` }}>
+              <button onClick={() => setReviewsOriginal(false)} style={{
+                padding: "7px 14px", border: "none", cursor: "pointer", fontSize: 12, fontWeight: 600,
+                background: !reviewsOriginal ? brown : "transparent",
+                color: !reviewsOriginal ? "white" : textMuted,
+                transition: "all 0.2s",
+              }}>{lang === "ru" ? "Перевод" : "Translated"}</button>
+              <button onClick={() => setReviewsOriginal(true)} style={{
+                padding: "7px 14px", border: "none", cursor: "pointer", fontSize: 12, fontWeight: 600,
+                background: reviewsOriginal ? brown : "transparent",
+                color: reviewsOriginal ? "white" : textMuted,
+                transition: "all 0.2s",
+              }}>{lang === "ru" ? "Оригинал" : "Original"}</button>
+            </div>
             {/* Booking.com badge */}
             <a href={BOOKING_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 16, background: "white", borderRadius: 16, padding: "16px 28px", textDecoration: "none", boxShadow: "0 4px 20px rgba(92,61,30,0.1)", border: `1px solid ${beige}` }}>
               <div style={{ textAlign: "left" }}>
@@ -818,7 +849,7 @@ export default function NomadPlace() {
             </a>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }} className="grid-cols-1 md:grid-cols-3">
-            {text.review_items.map((r, i) => (
+            {text.review_items.map((r, i) => { const orig = ORIGINAL_REVIEWS[i]; return (
               <div key={i} className="reveal" style={{
                 background: "white", borderRadius: 16, padding: "28px",
                 boxShadow: "0 2px 16px rgba(92,61,30,0.07)",
@@ -830,18 +861,20 @@ export default function NomadPlace() {
                 <div style={{ display: "flex", gap: 2, color: gold, marginBottom: 16 }}>
                   {Array.from({ length: r.stars }).map((_, j) => <IconStar key={j} />)}
                 </div>
-                <p style={{ fontSize: 14, color: textMuted, lineHeight: 1.75, marginBottom: 20, fontStyle: "italic" }}>"{r.text}"</p>
+                <p style={{ fontSize: 14, color: textMuted, lineHeight: 1.75, marginBottom: 20, fontStyle: "italic" }}>
+                  "{reviewsOriginal && orig ? orig.text : r.text}"
+                </p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <div style={{ width: 42, height: 42, borderRadius: "50%", background: `linear-gradient(135deg, ${gold}, ${brown})`, display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 700, fontSize: 16, flexShrink: 0 }}>
                     {r.name.charAt(0)}
                   </div>
                   <div>
                     <div style={{ fontWeight: 600, color: textDark, fontSize: 14 }}>{r.name}</div>
-                    <div style={{ fontSize: 12, color: textMuted }}>{r.country}</div>
+                    <div style={{ fontSize: 12, color: textMuted }}>{reviewsOriginal && orig ? orig.country : r.country}</div>
                   </div>
                 </div>
               </div>
-            ))}
+            ); })}
           </div>
         </div>
       </section>
