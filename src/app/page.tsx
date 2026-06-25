@@ -740,14 +740,37 @@ export default function NomadPlace() {
             <div style={{ display: "inline-block", background: beige, borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.gallery_title}</div>
             <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 12 }}>{text.gallery_sub}</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} className="grid-cols-2 sm:grid-cols-4">
-            {IMGS.gallery.map((src, i) => (
-              <div key={i} className="reveal" style={{ borderRadius: 12, overflow: "hidden", aspectRatio: i % 5 === 0 ? "1/1.3" : "1/1", cursor: "pointer", gridRow: i % 5 === 0 ? "span 2" : "span 1" }}>
-                <img src={src} alt={`Nomad Place Kyrgyzstan photo ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }}
+          {/* Row 1: 3 equal + 1 tall (spans 2 rows) */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "240px 240px", gap: 12 }}>
+            {/* tall item col 4, spans both rows */}
+            {[0, 1, 2].map(i => (
+              <div key={i} className="reveal" style={{ borderRadius: 12, overflow: "hidden", gridColumn: i + 1, gridRow: 1 }}>
+                <img src={IMGS.gallery[i]} alt={`Nomad Place Kyrgyzstan photo ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }}
                   onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
                   onMouseLeave={e => (e.currentTarget.style.transform = "")} loading="lazy" />
               </div>
             ))}
+            <div className="reveal" style={{ borderRadius: 12, overflow: "hidden", gridColumn: 4, gridRow: "1 / span 2" }}>
+              <img src={IMGS.gallery[3]} alt="Nomad Place Kyrgyzstan photo 4" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }}
+                onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
+                onMouseLeave={e => (e.currentTarget.style.transform = "")} loading="lazy" />
+            </div>
+            {/* Row 2: cols 1-3 */}
+            {[4, 5, 6].map((i, j) => (
+              <div key={i} className="reveal" style={{ borderRadius: 12, overflow: "hidden", gridColumn: j + 1, gridRow: 2 }}>
+                <img src={IMGS.gallery[i]} alt={`Nomad Place Kyrgyzstan photo ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "")} loading="lazy" />
+              </div>
+            ))}
+          </div>
+          {/* Row 3: last image full width strip */}
+          <div style={{ marginTop: 12, borderRadius: 12, overflow: "hidden", height: 200 }} className="reveal">
+            <img src={IMGS.gallery[7]} alt="Nomad Place Kyrgyzstan photo 8" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", transition: "transform 0.4s" }}
+              onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.03)")}
+              onMouseLeave={e => (e.currentTarget.style.transform = "")} loading="lazy" />
+          </div>
+          <div style={{ display: "none" }}>{/* placeholder */}
           </div>
         </div>
       </section>
