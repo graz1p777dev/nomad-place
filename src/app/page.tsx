@@ -78,7 +78,6 @@ const t = {
       { name: "Leon", country: "Кыргызстан", text: "Очень уютное местечко прямо у начала всех конных маршрутов! Я был приятно удивлён чистотой и новизной удобств, а также дружелюбием и отзывчивостью хозяев...", stars: 5 },
       { name: "Lisa", country: "Австрия", text: "Такое уютное местечко у самого начала всех конных туров! Была приятно удивлена чистотой и новым состоянием удобств, а хозяева такие дружелюбные и отзывчивые...", stars: 5 },
       { name: "Olivier", country: "Нидерланды", text: "Очень хорошее соотношение цены и качества. Ужин и завтрак включены и приготовлены дома — очень вкусно. Приятная социальная атмосфера.", stars: 5 },
-      { name: "Lisa", country: "Германия", text: "Нам очень понравился тёплый приём Аги и его семьи. Также было очень приятно, насколько быстро и легко организовали наш 2-дневный конный тур на Сон-Куль. Нам ни о чём не нужно было беспокоиться. Домашняя еда была отличной!", stars: 5 },
     ],
   },
   en: {
@@ -153,7 +152,6 @@ const t = {
       { name: "Leon", country: "Kyrgyzstan", text: "It's really accommodating with a super clean property and washroom. The family is super friendly and the food is just amazing!! As I got sick, they took care of me and gave me medicine.", stars: 5 },
       { name: "Lisa", country: "Austria", text: "Such a cozy little place right at the start of all horse trekking tours! I was super surprised about how clean and new the amenities are and how friendly and helpful the host is.", stars: 5 },
       { name: "Olivier", country: "Netherlands", text: "Very good value for your money. Dinner and breakfast is included and homemade, which was also very tasty. Nice social vibe.", stars: 5 },
-      { name: "Lisa", country: "Germany", text: "We loved the friendly welcome of Aga and his family. It was also very comfortable how quickly and easily our 2-days ride tour to Sonkul was organized. We had nothing to worry about. The homemade food was great!", stars: 5 },
     ],
   },
 };
@@ -194,7 +192,6 @@ const ORIGINAL_REVIEWS = [
   { name: "Leon", country: "Kyrgyzstan", text: "It's really accommodating with a super clean property and washroom. The family is super friendly and the food is just amazing!! As I got sick, they took care of me and gave me medicine." },
   { name: "Lisa", country: "Austria", text: "Such a cozy little place right at the start of all horse trekking tours! I was super surprised about how clean and new the amenities are and how friendly and helpful the host is." },
   { name: "Olivier", country: "Netherlands", text: "Very good value for your money. Dinner and breakfast is included and homemade, which was also very tasty. Nice social vibe." },
-  { name: "Lisa", country: "Germany", text: "We loved the friendly welcome of Aga and his family. It was also very comfortable how quickly and easily our 2-days ride tour to Sonkul was organized. We had nothing to worry about. The homemade food was great!" },
 ];
 
 const WA_LINK = "https://wa.me/996704100104";
