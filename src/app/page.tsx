@@ -1025,20 +1025,12 @@ export default function NomadPlace() {
       {/* ── FOOTER ────────────────────────────────────────────────────── */}
       <footer style={{ background: "#1A0E08", padding: "28px 24px", color: "rgba(255,255,255,0.5)", fontSize: 13 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            <a href="https://github.com/graz1p777dev" target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", textDecoration: "none", transition: "color 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
-            >
-              {lang === "ru" ? "Создано" : "Made by"} graz1p777
-            </a>
-            <a href="https://alihan-portfolio.vercel.app" target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", textDecoration: "none", transition: "color 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.65)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}
-            >
-              {lang === "ru" ? "Разработчик сайта:" : "Developer:"} alihan-portfolio.vercel.app
-            </a>
-          </div>
+          <a href="https://alihan-portfolio.vercel.app" target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", textDecoration: "none", transition: "color 0.2s" }}
+            onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
+          >
+            {lang === "ru" ? "Разработчик сайта:" : "Developer:"} alihan-portfolio.vercel.app
+          </a>
           <div style={{ textAlign: "center" }}>
             <div style={{ marginBottom: 4, fontFamily: "var(--font-playfair)", color: gold, fontSize: 16, letterSpacing: 2 }}>NOMAD PLACE</div>
             <div>{text.footer}</div>
