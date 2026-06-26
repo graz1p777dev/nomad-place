@@ -271,10 +271,11 @@ const IconStar = ({ filled = true }: { filled?: boolean }) => (
 // ─── Scroll reveal hook ───────────────────────────────────────────────────────
 function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
+    const selectors = ".reveal, .reveal-left, .reveal-right, .reveal-scale";
+    const els = document.querySelectorAll(selectors);
     const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); } }),
-      { threshold: 0.12 }
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      { threshold: 0.1 }
     );
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
@@ -348,7 +349,7 @@ export default function NomadPlace() {
           </button>
 
           {/* Desktop nav */}
-          <div style={{ display: "flex", gap: 4, alignItems: "center" }} className="hidden lg:flex">
+          <div className="nav-desktop">
             {text.nav.map((label, i) => (
               <button key={i} onClick={() => scrollTo(SECTIONS[i])} style={{
                 background: "none", border: "none", cursor: "pointer",
@@ -368,7 +369,7 @@ export default function NomadPlace() {
           </div>
 
           {/* Mobile controls */}
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }} className="flex lg:hidden">
+          <div className="nav-mobile-controls">
             <button onClick={() => scrollTo("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}>
               <img src="/nomad-place-logo.jpg" alt="Nomad Place" style={{ height: 36, width: 36, borderRadius: 8, objectFit: "cover", border: `1px solid ${gold}` }} />
             </button>
@@ -422,7 +423,7 @@ export default function NomadPlace() {
             <p style={{ fontSize: "clamp(16px,2vw,20px)", color: "rgba(255,255,255,0.85)", marginBottom: 40, fontStyle: "italic", letterSpacing: 1 }}>
               {text.hero_sub}
             </p>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <div className="hero-btns">
               <button onClick={() => scrollTo("tours")} style={{
                 background: gold, color: "white", border: "none", borderRadius: 8,
                 padding: "14px 32px", fontSize: 16, fontWeight: 600, cursor: "pointer",
@@ -462,8 +463,7 @@ export default function NomadPlace() {
           position: "absolute", bottom: 0, left: 0, right: 0,
           background: "rgba(44,24,16,0.85)", backdropFilter: "blur(10px)",
         }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}
-            className="grid-cols-2 sm:grid-cols-4">
+          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "20px 24px" }} className="feat-bar stagger">
             {[
               { icon: <IconBed />, label: text.feat1 },
               { icon: <IconMountain />, label: text.feat2 },
@@ -480,9 +480,9 @@ export default function NomadPlace() {
       </section>
 
       {/* ── ABOUT ──────────────────────────────────────────────────────── */}
-      <section id="about" style={{ padding: "100px 24px", background: cream }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="grid-cols-1 md:grid-cols-2">
-          <div className="reveal">
+      <section id="about" className="section-pad" style={{ background: cream }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }} className="about-grid">
+          <div className="reveal-left">
             <div style={{ display: "inline-block", background: beige, borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>
               {text.about_title}
             </div>
@@ -492,33 +492,33 @@ export default function NomadPlace() {
             <p style={{ fontSize: 16, lineHeight: 1.8, color: textMuted, marginBottom: 20 }}>{text.about_p1}</p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: textMuted, marginBottom: 20 }}>{text.about_p2}</p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: textMuted, fontStyle: "italic" }}>{text.about_p3}</p>
-            <div style={{ marginTop: 36, display: "flex", gap: 40 }}>
+            <div className="stat-row" style={{ marginTop: 36 }}>
               {[["10+", lang === "ru" ? "лет опыта" : "years exp."], ["500+", lang === "ru" ? "довольных гостей" : "happy guests"], ["3", lang === "ru" ? "вида туров" : "tour types"]].map(([n, l]) => (
-                <div key={l} style={{ textAlign: "center" }}>
-                  <div style={{ fontFamily: "var(--font-playfair)", fontSize: 36, fontWeight: 700, color: gold }}>{n}</div>
+                <div key={l} style={{ textAlign: "center" }} className="reveal-scale">
+                  <div className="shimmer-text" style={{ fontFamily: "var(--font-playfair)", fontSize: 36, fontWeight: 700 }}>{n}</div>
                   <div style={{ fontSize: 12, color: textMuted, letterSpacing: 0.5 }}>{l}</div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="reveal" style={{ position: "relative" }}>
+          <div className="reveal-right" style={{ position: "relative" }}>
             <div style={{ borderRadius: 20, overflow: "hidden", aspectRatio: "4/5", position: "relative" }}>
               <img src={IMGS.about} alt="Nomad Place family and yurt" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
             </div>
-            <div style={{
+            <div className="float-anim" style={{
               position: "absolute", bottom: -20, left: -20,
               background: gold, borderRadius: 16, padding: "20px 24px",
               boxShadow: "0 8px 32px rgba(201,168,76,0.4)",
             }}>
-              <div style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: "white" }}>★ 5.0</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.85)", letterSpacing: 1 }}>{lang === "ru" ? "Средняя оценка" : "Average rating"}</div>
+              <div style={{ fontFamily: "var(--font-playfair)", fontSize: 22, fontWeight: 700, color: "white" }}>★ 9.7</div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.85)", letterSpacing: 1 }}>{lang === "ru" ? "Оценка на Booking" : "Booking.com score"}</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── GUEST HOUSE ───────────────────────────────────────────────── */}
-      <section id="guesthouse" style={{ padding: "100px 24px", background: beige }}>
+      <section id="guesthouse" className="section-pad" style={{ background: beige }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ display: "inline-block", background: "white", borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.gh_title}</div>
@@ -526,24 +526,19 @@ export default function NomadPlace() {
           </div>
 
           {/* Rooms */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 28, marginBottom: 60 }} className="grid-cols-1 md:grid-cols-3">
+          <div className="rooms-grid">
             {[
               { img: IMGS.room1, title: text.gh_room1, desc: text.gh_room1_d, alt: "Standard room at Nomad Place" },
               { img: IMGS.room2, title: text.gh_room2, desc: text.gh_room2_d, alt: "Family room at Nomad Place" },
               { img: IMGS.yurt, title: text.gh_room3, desc: text.gh_room3_d, alt: "Traditional Kyrgyz yurt at Nomad Place" },
             ].map((room, i) => (
-              <div key={i} className="reveal" style={{
+              <div key={i} className="reveal card-lift" style={{
                 background: "white", borderRadius: 16, overflow: "hidden",
                 boxShadow: "0 4px 24px rgba(92,61,30,0.08)",
-                transition: "transform 0.3s, box-shadow 0.3s", cursor: "default",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(92,61,30,0.14)"; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 24px rgba(92,61,30,0.08)"; }}
-              >
+              }}>
                 <div style={{ aspectRatio: "3/2", overflow: "hidden" }}>
-                  <img src={room.img} alt={room.alt} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s" }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.05)")}
-                    onMouseLeave={e => (e.currentTarget.style.transform = "")} loading="lazy" />
+                  <img src={room.img} alt={room.alt} className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    loading="lazy" />
                 </div>
                 <div style={{ padding: "24px" }}>
                   <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: 20, fontWeight: 700, color: brown, marginBottom: 8 }}>{room.title}</h3>
@@ -570,18 +565,18 @@ export default function NomadPlace() {
       </section>
 
       {/* ── TOURS ─────────────────────────────────────────────────────── */}
-      <section id="tours" style={{ padding: "100px 24px", background: cream }}>
+      <section id="tours" className="section-pad" style={{ background: cream }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ display: "inline-block", background: beige, borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.tours_title}</div>
             <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 12 }}>{text.tours_sub}</h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, marginBottom: 28 }} className="grid-cols-1 md:grid-cols-2">
+          <div className="grid-2" style={{ marginBottom: 28 }}>
             {/* 2-day */}
-            <div className="reveal" style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 4px 24px rgba(92,61,30,0.1)", background: "white" }}>
+            <div className="reveal card-lift" style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 4px 24px rgba(92,61,30,0.1)", background: "white" }}>
               <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
-                <img src={IMGS.tour1} alt="2-day horse tour to Son-Kul" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+                <img src={IMGS.tour1} alt="2-day horse tour to Son-Kul" className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(44,24,16,0.8) 0%, transparent 60%)" }} />
                 <div style={{ position: "absolute", bottom: 20, left: 24, color: "white" }}>
                   <div style={{ fontFamily: "var(--font-playfair)", fontSize: 26, fontWeight: 700 }}>{text.tour2_title}</div>
@@ -610,9 +605,9 @@ export default function NomadPlace() {
             </div>
 
             {/* 3-day */}
-            <div className="reveal" style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 4px 24px rgba(92,61,30,0.1)", background: "white" }}>
+            <div className="reveal card-lift" style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 4px 24px rgba(92,61,30,0.1)", background: "white" }}>
               <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
-                <img src={IMGS.tour2} alt="3-day horse tour to Son-Kul" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+                <img src={IMGS.tour2} alt="3-day horse tour to Son-Kul" className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(44,24,16,0.8) 0%, transparent 60%)" }} />
                 <div style={{ position: "absolute", bottom: 20, left: 24, color: "white" }}>
                   <div style={{ fontFamily: "var(--font-playfair)", fontSize: 26, fontWeight: 700 }}>{text.tour3_title}</div>
@@ -642,8 +637,8 @@ export default function NomadPlace() {
           </div>
 
           {/* Individual */}
-          <div className="reveal" style={{
-            borderRadius: 20, overflow: "hidden", display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+          <div className="reveal ind-grid" style={{
+            borderRadius: 20, overflow: "hidden",
             boxShadow: "0 4px 24px rgba(92,61,30,0.1)", background: "white",
           }}>
             {/* Left — фото */}
@@ -695,7 +690,7 @@ export default function NomadPlace() {
       </section>
 
       {/* ── PRICES ────────────────────────────────────────────────────── */}
-      <section id="prices" style={{ padding: "100px 24px", background: beige }}>
+      <section id="prices" className="section-pad" style={{ background: beige }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
@@ -724,7 +719,7 @@ export default function NomadPlace() {
             <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: brown, marginBottom: 12, marginTop: 16 }}>{text.prices_sub}</h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }} className="grid-cols-1 md:grid-cols-2">
+          <div className="prices-grid">
             {/* 2-day prices */}
             <div className="reveal" style={{ background: "white", borderRadius: 20, padding: "36px", boxShadow: "0 4px 24px rgba(92,61,30,0.08)" }}>
               <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: 24, color: brown, fontWeight: 700, marginBottom: 6 }}>{text.tour2_title}</h3>
@@ -801,7 +796,7 @@ export default function NomadPlace() {
       </section>
 
       {/* ── GALLERY ───────────────────────────────────────────────────── */}
-      <section id="gallery" style={{ padding: "100px 24px", background: cream }}>
+      <section id="gallery" className="section-pad" style={{ background: cream }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ display: "inline-block", background: beige, borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.gallery_title}</div>
@@ -862,7 +857,7 @@ export default function NomadPlace() {
       </section>
 
       {/* ── REVIEWS ───────────────────────────────────────────────────── */}
-      <section id="reviews" style={{ padding: "100px 24px", background: beige }}>
+      <section id="reviews" className="section-pad" style={{ background: beige }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ marginBottom: 60, position: "relative" }}>
             <div style={{ textAlign: "center" }}>
@@ -901,16 +896,12 @@ export default function NomadPlace() {
               </div>
             </a>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }} className="grid-cols-1 md:grid-cols-3">
+          <div className="reviews-grid">
             {text.review_items.map((r, i) => { const orig = ORIGINAL_REVIEWS[i]; return (
-              <div key={i} className="reveal" style={{
+              <div key={i} className="reveal card-lift" style={{
                 background: "white", borderRadius: 16, padding: "28px",
                 boxShadow: "0 2px 16px rgba(92,61,30,0.07)",
-                transition: "transform 0.3s",
-              }}
-                onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-4px)")}
-                onMouseLeave={e => (e.currentTarget.style.transform = "")}
-              >
+              }}>
                 <div style={{ display: "flex", gap: 2, color: gold, marginBottom: 16 }}>
                   {Array.from({ length: r.stars }).map((_, j) => <IconStar key={j} />)}
                 </div>
@@ -933,7 +924,7 @@ export default function NomadPlace() {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────── */}
-      <section id="faq" style={{ padding: "100px 24px", background: cream }}>
+      <section id="faq" className="section-pad" style={{ background: cream }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ display: "inline-block", background: beige, borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.faq_title}</div>
@@ -963,14 +954,14 @@ export default function NomadPlace() {
       </section>
 
       {/* ── CONTACTS ──────────────────────────────────────────────────── */}
-      <section id="contacts" style={{ padding: "100px 24px", background: brown }}>
+      <section id="contacts" className="section-pad" style={{ background: brown }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ display: "inline-block", background: "rgba(201,168,76,0.2)", border: `1px solid ${gold}`, borderRadius: 100, padding: "6px 18px", marginBottom: 16, fontSize: 11, letterSpacing: 3, color: gold, textTransform: "uppercase", fontWeight: 700 }}>{text.contacts_title}</div>
             <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: "white", marginBottom: 12 }}>{text.contacts_sub}</h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }} className="grid-cols-1 md:grid-cols-2">
+          <div className="contacts-grid">
             {/* Info */}
             <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 28 }}>
               {[
@@ -1018,7 +1009,7 @@ export default function NomadPlace() {
             </div>
 
             {/* Map embed */}
-            <div className="reveal" style={{ borderRadius: 20, overflow: "hidden", height: 360, border: `2px solid rgba(201,168,76,0.3)` }}>
+            <div className="reveal map-wrap" style={{ border: `2px solid rgba(201,168,76,0.3)` }}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96000!2d75.5!3d41.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b9ab6ef8b0f0c1%3A0x3e6c6d79b0f0e0!2sKyzart%2C%20Naryn%20Region%2C%20Kyrgyzstan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
                 width="100%"
@@ -1080,23 +1071,6 @@ export default function NomadPlace() {
         }} />
       </a>
 
-      <style>{`
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 0.8; }
-          100% { transform: scale(1.6); opacity: 0; }
-        }
-        @media (max-width: 768px) {
-          .grid-cols-1 { grid-template-columns: 1fr !important; }
-          .grid-cols-2 { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 480px) {
-          .grid-cols-2 { grid-template-columns: 1fr !important; }
-        }
-        .hidden { display: none; }
-        @media (min-width: 1024px) { .hidden { display: flex !important; } }
-        .flex.lg\\:hidden { display: flex; }
-        @media (min-width: 1024px) { .flex.lg\\:hidden { display: none !important; } }
-      `}</style>
     </div>
   );
 }
