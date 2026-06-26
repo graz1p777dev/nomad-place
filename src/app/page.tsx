@@ -363,9 +363,6 @@ export default function NomadPlace() {
               marginLeft: 8, background: gold, color: "white", border: "none",
               borderRadius: 6, padding: "6px 14px", fontSize: 12, fontWeight: 600, cursor: "pointer", letterSpacing: 1,
             }}>{lang === "ru" ? "EN" : "RU"}</button>
-            <button onClick={() => scrollTo("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, marginLeft: 8, display: "flex", alignItems: "center" }}>
-              <img src="/nomad-place-logo.jpg" alt="Nomad Place" style={{ height: 44, width: 44, borderRadius: 10, objectFit: "cover", border: `2px solid ${gold}` }} />
-            </button>
           </div>
 
           {/* Mobile controls */}
